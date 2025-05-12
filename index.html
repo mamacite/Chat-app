@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Simple Chat Application</title>
+</head>
+<body>
+    <div class="container" role="main">
+        <div id="auth-container" class="auth-container" aria-labelledby="auth-title">
+            <h1 id="auth-title">Chat App</h1>
+            <label for="username-input">Username:</label>
+            <input type="text" id="username-input" placeholder="Enter your username" aria-required="true" />
+            <label for="password-input">Password:</label>
+            <input type="password" id="password-input" placeholder="Enter your password" aria-required="true" />
+            <button id="register-btn">Register</button>
+            <button id="login-btn">Login</button>
+            <div id="error-message" class="error-message hidden" role="alert"></div>
+        </div>
+        <div class="chat-container hidden" id="chat-container" aria-labelledby="chat-title">
+            <h2 id="chat-title">Chat Room</h2>
+            <div id="user-list" aria-live="polite"></div>
+            <div id="chat-box" aria-live="polite"></div>
+            <label for="message-input">Message:</label>
+            <input type="text" id="message-input" placeholder="Type a message..." maxlength="200" aria-required="true" />
+            <button id="send-btn">Send Message</button>
+            <button id="logout-btn">Logout</button>
+            <div id="typing-indicator" class="hidden" aria-live="polite">User is typing...</div>
+        </div>
+        <button id="dark-mode-toggle">Toggle Dark Mode</button>
+    </div>
+    <script>
+        // JavaScript code as before, with enhancements
+        // Add event listener for dark mode toggle
+        const darkModeToggle = document.getElementById('dark-mode-toggle');
+        darkModeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Other JavaScript code remains unchanged...
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            transition: background-color 0.3s;
+        }
+
+        .container {
+            width: 400px;
+        }
+
+        .auth-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .chat-container {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            max-height: 600px;
+        }
+
+        #user-list {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        #chat-box {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .message {
+            margin: 5px 0;
+        }
+
+        #message-input {
+            border: none;
+            padding: 10px;
+            flex: 0;
+            width: calc(100% - 80px);
+        }
+
+        #send-btn, #logout-btn {
+            padding: 10px;
+            border: none;
+            background: #007bff;
+            color: white;
+            cursor: pointer;
+        }
+
+        #send-btn:hover, #logout-btn:hover {
+            background: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
+        }
+
+        #typing-indicator {
+            margin-top: 5px;
+            font-style: italic;
+            color: #888;
+        }
+
+        /* Dark mode styles */
+        .dark-mode {
+            background-color: #333;
+            color: #fff;
+        }
+
+        .dark-mode .chat-container {
+            background: #444;
+        }
+    </style>
+</body>
+</html>
